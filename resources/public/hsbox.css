@@ -3,12 +3,6 @@ h1 {
     text-align: center;
 }
 
-.avatar {
-    margin: 20px;
-    text-align: center;
-    border-radius: 25%;
-}
-
 .demo-avatar {
     border-radius: 25%;
 }
@@ -105,10 +99,10 @@ a {
     list-style-type: none;
 }
 
-.red { color: red; }
-.green { color: green; }
-.blue { color: blue; }
-.lightblue { color: blue; }
+.red { color: hsl(  5, 74%, 59%); }
+.green { color: hsl(119, 34%, 47%); }
+.blue { color: hsl(221, 87%, 60%); }
+.lightblue { color: hsl(198, 99%, 37%); }
 .won_background { background-color: #F1FFEF; cursor: pointer; }
 .lost_background { background-color: #FFF1EF; cursor: pointer; }
 .tied_background { background-color: #F0F0F0; cursor: pointer; }
@@ -220,4 +214,8 @@ a {
 
 .tilted {
     transform: rotate(15deg);
+}
+
+.weapon_img_invert {
+    filter: invert(0.8);
 }

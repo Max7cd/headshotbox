@@ -1,0 +1,20 @@
+.ralign-text {
+    text-align: right;
+}
+
+abbr {
+    cursor: inherit !important;
+    text-decoration: inherit !important;
+    border-bottom: inherit !important;
+}
+
+.avatar {
+    width: 64px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 25%;
+}
+
+.padding-r-10px {
+    padding-right: 10px;
+}

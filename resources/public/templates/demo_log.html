@@ -4,8 +4,8 @@
       <tab-heading>
         <i class="fa fa-exchange" ng-if="round.teams_switched"></i>
         <span ng-class="{lightblue: round.winner == 3, red: round.winner == 2}">{{$index + 1}}</span>
-        <img ng-src="img/defuser.png" ng-if="round['bomb_defused']" height="20"/>
-        <img ng-src="img/c4.png" ng-if="round['bomb_exploded']" height="20"/>
+        <img class="weapon_img_invert" ng-src="img/defuser.png" ng-if="round['bomb_defused']" height="20"/>
+        <img class="weapon_img_invert" ng-src="img/c4.png" ng-if="round['bomb_exploded']" height="20"/>
         <i class="fa fa-warning" ng-if="round.deaths.length > 10"></i>
       </tab-heading>
 
@@ -47,7 +47,7 @@
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-6">
-              <table class="table">
+              <table class="table force-white">
                 <thead>
                   <tr>
                     <th class="text-center">CT</th>
@@ -58,19 +58,19 @@
                 <tr ng-repeat="(player, team) in round.players" ng-if="team == 3">
                   <td>
                     <span ng-class="{lightblue: round.players[player] == 3, red: round.players[player] == 2}">{{playerName(demo.players[player])}}</span>
-                    <img ng-src="img/defuser.png" ng-if="round['bomb_defused'] == player" height="20"/>
+                    <img class="weapon_img_invert" ng-src="img/defuser.png" ng-if="round['bomb_defused'] == player" height="20"/>
                   </td>
-                  <td>
-                    <span>{{round.damage[player]}}</span>
+                  <td class='ralign-text'>
+                    <span>{{round.damage[player] ? round.damage[player] : 0}}</span>
                   </td>
-                  <td ng-if="round.winner == 3">
-                    <span>{{round.rws[player]}}</span>
+                  <td class='ralign-text' ng-if="round.winner == 3">
+                    <span>{{round.rws[player] | number: 1}}</span>
                   </td>
                 </tr>
               </table>
             </div>
             <div class="col-md-6">
-              <table class="table">
+              <table class="table force-white">
                 <thead>
                   <tr>
                     <th class="text-center">T</th>
@@ -81,13 +81,13 @@
                 <tr ng-repeat="(player, team) in round.players" ng-if="team == 2">
                   <td>
                     <span ng-class="{lightblue: round.players[player] == 3, red: round.players[player] == 2}">{{playerName(demo.players[player])}}</span>
-                    <img ng-src="img/c4.png" ng-if="round['bomb_exploded'] == player" height="20"/>
+                    <img class="weapon_img_invert" ng-src="img/c4.png" ng-if="round['bomb_exploded'] == player" height="20"/>
                   </td>
-                  <td>
-                    <span>{{round.damage[player]}}</span>
+                  <td class='ralign-text'>
+                    <span>{{round.damage[player] ? round.damage[player] : 0}}</span>
                   </td>
-                  <td ng-if="round.winner == 2">
-                    <span>{{round.rws[player]}}</span>
+                  <td class='ralign-text' ng-if="round.winner == 2">
+                    <span>{{round.rws[player] | number: 1}}</span>
                   </td>
                 </tr>
                 </tr>
@@ -112,14 +112,14 @@
               <td>{{death.tick}}</td>
               <td>
                 <span ng-class="{lightblue: round.players[death.attacker] == 3, red: round.players[death.attacker] == 2}">{{playerName(demo.players[death.attacker])}}</span>
-                <span ng-if="death.assister != '0'" ng-class="{blue: round.players[death.assister] == 3, red: round.players[death.assister] == 2}">
-                  +
+                <span ng-if="death.assister != '0'" ng-class="{lightblue: round.players[death.assister] == 3, red: round.players[death.assister] == 2}">
+                  <span class="force-white">+</span>
                   <img ng-src="img/weapons/icon-flashbang_grey.png" ng-if="death.assistedflash" height="20"/>
                   {{playerName(demo.players[death.assister])}}</span>
-                <img ng-src="img/weapons/icon-{{death.weapon_name.startsWith('world') ? 'suicide' : death.weapon_name}}_grey.png" ng-if="death.weapon_name" height="20"/>
+                <img class="weapon_img_invert" ng-src="img/weapons/icon-{{death.weapon_name.startsWith('world') ? 'suicide' : death.weapon_name}}_grey.png" ng-if="death.weapon_name" height="20"/>
                 <div ng-if="!death.weapon_name">{{death.weapon}}</div>
-                <img ng-if="death.penetrated" src="img/weapons/icon-penetrate_grey.png" height="20"/>
-                <img ng-if="death.headshot" src="img/weapons/icon-headshot_grey.png" height="20"/>
+                <img class="weapon_img_invert" ng-if="death.penetrated" src="img/weapons/icon-penetrate_grey.png" height="20"/>
+                <img class="weapon_img_invert" ng-if="death.headshot" src="img/weapons/icon-headshot_grey.png" height="20"/>
                 <span ng-class="{lightblue: round.players[death.victim] == 3, red: round.players[death.victim] == 2}">{{playerName(demo.players[death.victim])}}</span>
               </td>
             </tr>

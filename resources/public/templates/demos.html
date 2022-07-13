@@ -1,16 +1,16 @@
 <table id="demos" class="table">
   <thead>
     <tr>
-      <th class="text-left"><a ng-click="orderDemos = (orderDemos  == '-timestamp' ? 'timestamp' : '-timestamp')">Date</a></th>
-      <th class="text-center">Type</th>
-      <th class="text-center">Rank</th>
-      <th class="text-left">Map</th>
-      <th class="text-center">Score</th>
-      <th class="text-center"><a ng-click="orderDemos = '-kills'">K</a></th>
-      <th class="text-center"><abbr title="Assists (Flashbang assists)">A (FA)</abbr></th>
-      <th class="text-center">D</th>
-      <th class="text-center"><a ng-click="orderDemos = '-kdd'"><abbr title="Kill-Death Difference">KDD</abbr></a></th>
-      <th class="text-center"><a ng-click="orderDemos = '-hs_percent'"><abbr title="Headshot Percent">HS %</abbr></a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-type' ? 'type' : '-type')">Type</a></th>
+      <th class="text-left">  <a ng-click="orderDemos = (orderDemos  == '-timestamp' ? 'timestamp' : '-timestamp')">Date</a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-mm_rank_update.rank_old' ? 'mm_rank_update.rank_old' : '-mm_rank_update.rank_old')">Rank</a></th>
+      <th class="text-left">  <a ng-click="orderDemos = (orderDemos  == '-map' ? 'map' : '-map')">Map</a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-score[0]' ? 'score[0]' : '-score[0]')">Score</a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-kills' ? 'kills' : '-kills')">K</a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-assists' ? 'assists' : '-assists')"><abbr title="Assists">A</abbr></a> <a ng-click="orderDemos = (orderDemos  == '-assists_flash' ? 'assists_flash' : '-assists_flash')"><abbr title="Flashbang Assists">(FA)</abbr></a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-deaths' ? 'deaths' : '-deaths')"><abbr title="Deaths">D</abbr></a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-kdd' ? 'kdd' : '-kdd')"><abbr title="Kill-Death Difference">KDD</abbr></a></th>
+      <th class="text-center"><a ng-click="orderDemos = (orderDemos  == '-hs_percent' ? 'hs_percent' : '-hs_percent')"><abbr title="Headshot Percent">HS %</abbr></a></th>
       <th class="text-center">Watch</th>
     </tr>
   </thead>
@@ -25,7 +25,7 @@
             {{demo.date}}
           </div>
         </div>
-      <td class="text-center nopadding"><img ng-src="img/{{demo.type}}.png" width="50"/></td>
+      <td class="text-center nopadding"><img class="game_type_bg_color" ng-src="img/{{demo.type}}.png" width="50"/></td>
       <td class="text-center nopadding">
         <img ng-if="demo.mm_rank_update.rank_old" ng-src="img/ranks/{{demo.mm_rank_update.rank_old}}.png" width="50"/>
         <span ng-if="demo.mm_rank_update.rank_old != demo.mm_rank_update.rank_new">
@@ -59,7 +59,7 @@
           <i class="fa fa-play-circle"></i>
         </button>
 
-        <div class="btn-group dropdown">
+        <div class="padding-r-10px btn-group dropdown">
           <button type="button" class="btn btn-primary btn-xs dropdown-toggle">
             More <span class="caret"></span>
           </button>
